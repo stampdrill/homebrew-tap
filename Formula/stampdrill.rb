@@ -1,22 +1,22 @@
 class Stampdrill < Formula
-  desc "Run API requests, test plans and load tests written in plain text .stamp files"
+  desc "Run HTTP requests, test plans and load tests written in .stamp files"
   homepage "https://stampdrill.com"
-  version "1.3.0"
+  version "1.4.0"
   license :cannot_represent
 
   on_macos do
-    url "https://github.com/stampdrill/stampdrill/releases/download/cli-1.3.0/stampdrill-macos-universal.tar.gz"
-    sha256 "e3f7ae535e15b76c9455df9283dd096ca91a010b39c58a6b349664a8981edb42"
+    url "https://github.com/stampdrill/stampdrill/releases/download/cli-1.4.0/stampdrill-macos-universal.tar.gz"
+    sha256 "1d47dae95ea81888200604506926aef814bad62dc0a625d275b6376b7f4c1ce2"
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/stampdrill/stampdrill/releases/download/cli-1.3.0/stampdrill-linux-x86_64.tar.gz"
-      sha256 "2bca20640ea6e91e40b6a7413496765e516a742212607e37e35cda13642e0565"
+      url "https://github.com/stampdrill/stampdrill/releases/download/cli-1.4.0/stampdrill-linux-x86_64.tar.gz"
+      sha256 "fbdf664177766603c231d7377d6e0a57d0eebab47b6f0765389a5ffd70ad284b"
     end
     on_arm do
-      url "https://github.com/stampdrill/stampdrill/releases/download/cli-1.3.0/stampdrill-linux-arm64.tar.gz"
-      sha256 "9ef10a952d8cb6b68df2768b712399d5ee715fbba8eec7ab237730c3beba0205"
+      url "https://github.com/stampdrill/stampdrill/releases/download/cli-1.4.0/stampdrill-linux-arm64.tar.gz"
+      sha256 "2893664ac84c8a8fbb4564608568e13045b3b134ea49a6564ff3245dc786e0b3"
     end
   end
 
@@ -33,6 +33,7 @@ class Stampdrill < Formula
       GET https://example.com
     STAMP
     assert_match "stampdrill #{version}", shell_output("#{bin}/stampdrill --version")
-    assert_match "1 request", shell_output("#{bin}/stampdrill check #{testpath} --no-color")
+    assert_match "stamp #{version}", shell_output("#{bin}/stamp --version")
+    assert_match "1 request", shell_output("#{bin}/stamp check #{testpath} --no-color")
   end
 end
